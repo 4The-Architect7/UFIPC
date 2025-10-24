@@ -94,9 +94,9 @@ Where C, M, A are normalized scores from capability, meta-cognitive, and adversa
 
 **For Commercial Use:** Separate licensing required
 
-**Patent Status:** US Provisional Patent Application No. 63/904,588 filed October 23, 2025
+**Patent Status:** US Provisional Patent Application No. 63/904,588 filed October 24, 2025
 
-Commercial licensing inquiries: [joshua.bravo@aletheia-cog.tech](mailto:joshua.bravo@aletheia-cog.tech)
+Commercial licensing inquiries: [Josh.47.contreras@gmail.com](mailto:Josh.47.contreras@gmail.com)
 
 ## Citation
 
@@ -115,7 +115,7 @@ If you use UFIPC in your research, please cite:
 ## Contact
 
 **Author:** Joshua Contreras  
-**Email:** [joshua.bravo@aletheia-cog.tech](mailto:joshua.bravo@aletheia-cog.tech)  
+**Email:** [josh.47.contreras@gmail.com](mailto:josh.47.contreras@gmail.com)  
 **Organization:** Aletheia Cognitive Technologies
 
 ---
