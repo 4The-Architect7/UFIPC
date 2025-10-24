@@ -1,0 +1,25 @@
+# UFIPC Dependencies
+# Copyright (c) 2025 Joshua Contreras / Aletheia Cognitive Technologies
+# Patent Pending: US Provisional Application No. 63/904,588
+
+# Core scientific computing
+numpy>=1.24.0
+scipy>=1.10.0
+
+# API clients for model testing
+anthropic>=0.25.0
+openai>=1.12.0
+google-generativeai>=0.4.0
+
+# Data handling
+pandas>=2.0.0
+
+# Utilities
+tqdm>=4.65.0
+python-dotenv>=1.0.0
+requests>=2.31.0
+
+# Optional: For advanced analysis
+# matplotlib>=3.7.0
+# seaborn>=0.12.0
+# jupyter>=1.0.0
