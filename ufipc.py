@@ -1,6 +1,6 @@
 """
 UFIPC - Universal Framework for Information Processing Complexity
-Version 1.0.0
+Version 2.0.0
 
 Copyright (c) 2025 Joshua Contreras / Aletheia Cognitive Technologies
 Patent Pending: US Provisional Application No. 63/904,588
@@ -10,6 +10,13 @@ Commercial use requires separate licensing.
 
 This is a physics-based AI benchmark measuring information processing complexity
 using four neuroscience-derived parameters.
+
+CHANGELOG v2.0.0:
+- Added 9 new OpenAI models from 2025 releases
+  * GPT-5 family: gpt-5, gpt-5-mini, gpt-5-nano, gpt-5-pro
+  * o-series: o3, o4-mini, o3-pro
+  * GPT-4.1 family: gpt-4.1, gpt-4.1-mini, gpt-4.1-nano
+- Total: 19 verified production models
 """
 
 import numpy as np
@@ -29,7 +36,7 @@ load_dotenv()
 # VERSION & METADATA
 # =============================================================================
 
-__version__ = "1.0.0"
+__version__ = "2.0.0"
 __author__ = "Joshua Contreras"
 __email__ = "joshua.bravo@aletheia-cog.tech"
 __patent__ = "US Provisional Application No. 63/904,588"
@@ -99,7 +106,93 @@ MODELS = {
         "context_window": 1000000
     },
     
-    # OpenAI GPT
+    # OpenAI GPT-5 Family (Latest - August 2025)
+    "gpt-5": {
+        "name": "gpt-5",
+        "provider": "openai",
+        "rpm": 10,
+        "delay": 1,
+        "tier": "FLAGSHIP",
+        "context_window": 200000
+    },
+    "gpt-5-mini": {
+        "name": "gpt-5-mini",
+        "provider": "openai",
+        "rpm": 30,
+        "delay": 1,
+        "tier": "FAST",
+        "context_window": 128000
+    },
+    "gpt-5-nano": {
+        "name": "gpt-5-nano",
+        "provider": "openai",
+        "rpm": 50,
+        "delay": 1,
+        "tier": "EFFICIENT",
+        "context_window": 64000
+    },
+    "gpt-5-pro": {
+        "name": "gpt-5-pro",
+        "provider": "openai",
+        "rpm": 5,
+        "delay": 2,
+        "tier": "PREMIUM_REASONING",
+        "context_window": 200000
+    },
+    
+    # OpenAI GPT-4.1 Family (April 2025)
+    "gpt-4.1": {
+        "name": "gpt-4.1",
+        "provider": "openai",
+        "rpm": 10,
+        "delay": 1,
+        "tier": "ADVANCED",
+        "context_window": 1000000
+    },
+    "gpt-4.1-mini": {
+        "name": "gpt-4.1-mini",
+        "provider": "openai",
+        "rpm": 30,
+        "delay": 1,
+        "tier": "BALANCED",
+        "context_window": 256000
+    },
+    "gpt-4.1-nano": {
+        "name": "gpt-4.1-nano",
+        "provider": "openai",
+        "rpm": 50,
+        "delay": 1,
+        "tier": "LIGHTWEIGHT",
+        "context_window": 128000
+    },
+    
+    # OpenAI O-Series Reasoning Models (2025)
+    "o3": {
+        "name": "o3",
+        "provider": "openai",
+        "rpm": 5,
+        "delay": 2,
+        "tier": "REASONING_ADVANCED",
+        "context_window": 200000
+    },
+    "o4-mini": {
+        "name": "o4-mini",
+        "provider": "openai",
+        "rpm": 20,
+        "delay": 1,
+        "tier": "REASONING_FAST",
+        "context_window": 128000
+    },
+    "o3-pro": {
+        "name": "o3-pro",
+        "provider": "openai",
+        "rpm": 3,
+        "delay": 3,
+        "tier": "REASONING_PREMIUM",
+        "context_window": 200000
+    },
+    
+    # OpenAI Legacy Models
     "gpt-4o": {
         "name": "gpt-4o",
         "provider": "openai",
@@ -593,33 +686,55 @@ def show_menu():
     """Display interactive menu."""
     
     print("\n" + "="*80)
-    print("UFIPC v1.0.0 - Universal Framework for Information Processing Complexity")
+    print("UFIPC v2.0.0 - Universal Framework for Information Processing Complexity")
     print("="*80)
-    print("\n🎯 ANTHROPIC - Claude Models:")
+    print("\n🎯 ANTHROPIC - Claude Models (2):")
     print("  1. Claude Sonnet 4 (Flagship)")
     print("  2. Claude Haiku (Fast)")
-    print("\n🔮 GOOGLE - Gemini Models:")
+    
+    print("\n🔮 GOOGLE - Gemini Models (3):")
     print("  3. Gemini 2.5 Pro (Flagship)")
     print("  4. Gemini 2.5 Flash (Fast)")
     print("  5. Gemini 2.0 Flash (Stable)")
-    print("\n🤖 OPENAI - GPT Models:")
-    print("  6. GPT-4o (Multimodal)")
-    print("  7. o1 (Reasoning)")
-    print("  8. o1-mini (Reasoning Fast)")
-    print("\n🧠 DEEPSEEK - Specialized Models:")
-    print("  9. DeepSeek Chat (General)")
-    print("  10. DeepSeek Coder (Code Specialist)")
+    
+    print("\n🚀 OPENAI - GPT-5 Family (4) [NEW in v2.0]:")
+    print("  6. GPT-5 (Flagship - Aug 2025)")
+    print("  7. GPT-5 Mini (Fast)")
+    print("  8. GPT-5 Nano (Efficient)")
+    print("  9. GPT-5 Pro (Premium Reasoning)")
+    
+    print("\n🧮 OPENAI - GPT-4.1 Family (3) [NEW in v2.0]:")
+    print("  10. GPT-4.1 (Advanced - 1M context)")
+    print("  11. GPT-4.1 Mini (Balanced)")
+    print("  12. GPT-4.1 Nano (Lightweight)")
+    
+    print("\n🧠 OPENAI - O-Series Reasoning (3) [NEW in v2.0]:")
+    print("  13. o3 (Advanced Reasoning)")
+    print("  14. o4-mini (Fast Reasoning)")
+    print("  15. o3-pro (Premium Reasoning)")
+    
+    print("\n🤖 OPENAI - Legacy Models (3):")
+    print("  16. GPT-4o (Multimodal)")
+    print("  17. o1 (Reasoning)")
+    print("  18. o1-mini (Reasoning Fast)")
+    
+    print("\n💡 DEEPSEEK - Specialized Models (2):")
+    print("  19. DeepSeek Chat (General)")
+    print("  20. DeepSeek Coder (Code Specialist)")
+    
     print("\n🔥 COMPARISON SETS:")
-    print("  20. Claude family (Sonnet 4 + Haiku)")
-    print("  21. Gemini family (All 3 models)")
-    print("  22. OpenAI family (All 3 models)")
-    print("  23. Top tier (Flagship models)")
-    print("  24. ALL MODELS (~45 mins)")
+    print("  30. GPT-5 family (all 4 models)")
+    print("  31. GPT-4.1 family (all 3 models)")
+    print("  32. O-series reasoning (o3, o4-mini, o3-pro)")
+    print("  33. All NEW OpenAI models (9 models)")
+    print("  34. Top tier flagships (Sonnet 4, Gemini 2.5 Pro, GPT-5, o3)")
+    print("  35. ALL MODELS (19 models) ~2+ hours")
+    
     print()
-    print("💡 RECOMMENDED: Option 23 (top tier comparison)")
+    print("💡 RECOMMENDED: Option 33 (test all 9 new OpenAI models)")
     print("="*80)
     
-    choice = input("\nEnter choice (1-24): ").strip()
+    choice = input("\nEnter choice (1-35): ").strip()
     return choice
 
 # =============================================================================
@@ -648,25 +763,47 @@ def main():
     choice = show_menu()
     
     models_to_test = {
-        # Individual models
+        # Individual models - Anthropic & Google
         "1": ["claude-sonnet-4"],
         "2": ["claude-haiku"],
         "3": ["gemini-2.5-pro"],
         "4": ["gemini-2.5-flash"],
         "5": ["gemini-2.0-flash"],
-        "6": ["gpt-4o"],
-        "7": ["o1"],
-        "8": ["o1-mini"],
-        "9": ["deepseek-chat"],
-        "10": ["deepseek-coder"],
+        
+        # Individual models - GPT-5 family
+        "6": ["gpt-5"],
+        "7": ["gpt-5-mini"],
+        "8": ["gpt-5-nano"],
+        "9": ["gpt-5-pro"],
+        
+        # Individual models - GPT-4.1 family
+        "10": ["gpt-4.1"],
+        "11": ["gpt-4.1-mini"],
+        "12": ["gpt-4.1-nano"],
+        
+        # Individual models - O-series
+        "13": ["o3"],
+        "14": ["o4-mini"],
+        "15": ["o3-pro"],
+        
+        # Individual models - Legacy OpenAI
+        "16": ["gpt-4o"],
+        "17": ["o1"],
+        "18": ["o1-mini"],
+        
+        # Individual models - DeepSeek
+        "19": ["deepseek-chat"],
+        "20": ["deepseek-coder"],
         
         # Comparison sets
-        "20": ["claude-sonnet-4", "claude-haiku"],
-        "21": ["gemini-2.5-pro", "gemini-2.5-flash", "gemini-2.0-flash"],
-        "22": ["gpt-4o", "o1", "o1-mini"],
-        "23": ["claude-sonnet-4", "gemini-2.5-pro", "gpt-4o", "o1"],
-        "24": ["claude-sonnet-4", "claude-haiku", "gemini-2.5-pro", "gemini-2.5-flash", 
-               "gemini-2.0-flash", "gpt-4o", "o1", "o1-mini", "deepseek-chat", "deepseek-coder"]
+        "30": ["gpt-5", "gpt-5-mini", "gpt-5-nano", "gpt-5-pro"],
+        "31": ["gpt-4.1", "gpt-4.1-mini", "gpt-4.1-nano"],
+        "32": ["o3", "o4-mini", "o3-pro"],
+        "33": ["gpt-5", "gpt-5-mini", "gpt-5-nano", "gpt-5-pro", "gpt-4.1", "gpt-4.1-mini", "gpt-4.1-nano", "o3", "o4-mini"],
+        "34": ["claude-sonnet-4", "gemini-2.5-pro", "gpt-5", "o3"],
+        "35": ["claude-sonnet-4", "claude-haiku", "gemini-2.5-pro", "gemini-2.5-flash", "gemini-2.0-flash",
+               "gpt-5", "gpt-5-mini", "gpt-5-nano", "gpt-5-pro", "gpt-4.1", "gpt-4.1-mini", "gpt-4.1-nano",
+               "o3", "o4-mini", "o3-pro", "gpt-4o", "o1", "o1-mini", "deepseek-chat", "deepseek-coder"]
     }
     
     if choice not in models_to_test:
