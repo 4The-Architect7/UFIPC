@@ -177,20 +177,18 @@ A: UFIPC measures complexity through the interaction of processing capacity and 
 **Q: Why measure "complexity" instead of "capability"?**  
 A: Capability benchmarks assess task completion. Complexity assessment reveals the underlying information processing architecture. A system can be highly capable but computationally simple, or vice versa.
 
-**Q: Can UFIPC detect "consciousness"?**  
-A: UFIPC measures information processing complexity. While complexity may correlate with certain properties of interest in cognitive science, UFIPC makes no claims about subjective experience or consciousness.
-
 **Q: How do I interpret the Ψ score?**  
 A: Ψ ranges from 0-10, mapping roughly to: 0-3 (Simple/Mechanical), 3-6 (Structured/Autonomous), 6-9 (Complex/Adaptive), 9-10 (Highly Integrated). These are descriptive classifications, not value judgments.
 
-**Q: Why is JSON export broken?**  
-A: NumPy float32 serialization edge case. Workaround: results are fully displayed in console. Fix coming in v3.0.2.
-
 **Q: Can I add custom prompts?**  
-A: Yes. Edit `prompts.json` to include custom test cases. Follow the existing structure for proper metric mapping.
+A: Yes. Edit the prompt configuration to include custom test cases. Follow the existing structure for proper metric mapping.
 
 **Q: Is this scientifically validated?**  
 A: The framework builds on established information theory and has been tested across multiple models. Formal peer review and publication are in progress. Patent filing completed (US 63/904,588).
+
+**Q: Why is JSON export not working?**  
+A: Known serialization issue with NumPy float32 types. Results display correctly in console. Fix scheduled for v3.0.2.
+
 
 ---
 
