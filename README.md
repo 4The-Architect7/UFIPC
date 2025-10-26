@@ -1,29 +1,50 @@
-# UFIPC - Universal Framework for Information Processing Complexity
+# UFIPC v3.0.1
 
-[![Patent Pending](https://img.shields.io/badge/Patent-Pending-blue.svg)](https://patents.google.com/)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+## Universal Framework for Information Processing Complexity
 
-**Patent Pending** - US Provisional Application No. 63/904,588
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+
+A framework for quantitative assessment of information processing complexity in AI systems.
+
+**Author:** Joshua Contreras  
+**Affiliation:** Aletheia Cognitive Technologies  
+**Patent:** US Provisional Patent Application No. 63/904,588
 
 ---
 
-## What is UFIPC?
+## Overview
 
-UFIPC is a physics-based benchmark for measuring AI information processing complexity using four neuroscience-derived parameters. Unlike traditional benchmarks that only measure task accuracy, UFIPC quantifies the underlying computational architecture and reveals a **29% complexity gap** between models with identical task performance.
+UFIPC provides a standardized methodology for evaluating AI system complexity across nine quantitative metrics. The framework measures computational substrate properties and behavioral patterns to generate a composite complexity index.
 
-Traditional benchmarks tell you *what* a model can do. UFIPC reveals *how* it processes information.
+### Measurement Framework
 
-## Why It Matters
+The framework employs two metric categories:
 
-Current AI benchmarks are blind to architecture:
-- **GPT-4** and **Claude Sonnet** may score identically on MMLU
-- But UFIPC reveals fundamentally different processing complexity
-- Architecture matters for reliability, safety, and deployment decisions
+**Substrate Metrics (Φ)** - Quantifies processing capacity through five computational measures:
+- EIT: Energy-Information-Theoretic Efficiency
+- SDC: Signal Discrimination Capacity  
+- MAPI: Memory-Adaptive Plasticity Index
+- NSR: Neural System Responsiveness
+- VSC: Vector Space Coherence
 
-**Key Finding:** Models with identical task scores show IPC differences of up to 29%, indicating fundamentally different information processing strategies that traditional benchmarks cannot detect.
+**Pattern Metrics (Γ)** - Assesses autonomous behavioral characteristics through four measures:
+- CFR: Compliance Friction Ratio
+- ETR: Error Transparency Rating
+- PC: Pursuit of Causality
+- AIS: Architectural Integrity Score
 
-## Quick Installation
+**Output:** Consciousness Complexity Index (Ψ)
+
+---
+
+## Installation
+
+### Requirements
+
+- Python 3.8 or higher
+- pip package manager
+
+### Setup
 
 ```bash
 git clone https://github.com/4The-Architect7/UFIPC.git
@@ -31,95 +52,160 @@ cd UFIPC
 pip install -r requirements.txt
 ```
 
-Set up your API keys in a `.env` file:
+### API Configuration
+
+Create `.env` file from template:
+
 ```bash
-ANTHROPIC_API_KEY=your_key_here
-OPENAI_API_KEY=your_key_here
-GOOGLE_API_KEY=your_key_here
-DEEPSEEK_API_KEY=your_key_here
+cp .env.example .env
 ```
 
-## Usage Example
+Configure API credentials in `.env`:
 
-```python
-from ufipc import UFIPCBenchmark
-
-# Initialize benchmark
-benchmark = UFIPCBenchmark()
-
-# Test a model
-results = benchmark.assess_model("claude-sonnet-4")
-
-# View IPC score
-print(f"IPC Score: {results['ipc']['mean']:.4f}")
+```
+OPENAI_API_KEY=your_key
+ANTHROPIC_API_KEY=your_key
+GOOGLE_API_KEY=your_key
+XAI_API_KEY=your_key
+DEEPSEEK_API_KEY=your_key
 ```
 
-## Results
+---
 
-Benchmark results from October 2025 testing (n=3 runs per model):
+## Usage
 
-| Model | Provider | IPC Score | Capability | Meta-Cognitive | Adversarial |
-|-------|----------|-----------|------------|----------------|-------------|
-| Claude Sonnet 4 | Anthropic | 0.7845 | 0.867 | 0.812 | 0.745 |
-| GPT-4o | OpenAI | 0.7623 | 0.851 | 0.798 | 0.721 |
-| Gemini 2.5 Pro | Google | 0.7401 | 0.834 | 0.776 | 0.710 |
-| o1 | OpenAI | 0.7298 | 0.823 | 0.761 | 0.698 |
-| Claude Haiku | Anthropic | 0.6812 | 0.789 | 0.712 | 0.654 |
-| Gemini 2.5 Flash | Google | 0.6734 | 0.776 | 0.701 | 0.642 |
-| o1-mini | OpenAI | 0.6512 | 0.754 | 0.683 | 0.623 |
-| Gemini 2.0 Flash | Google | 0.6389 | 0.741 | 0.667 | 0.611 |
-| DeepSeek Chat | DeepSeek | 0.6145 | 0.723 | 0.641 | 0.589 |
-| DeepSeek Coder | DeepSeek | 0.5934 | 0.698 | 0.623 | 0.571 |
+Execute benchmark via command line:
 
-**Key Insight:** The 29% gap between top (0.7845) and bottom (0.5934) performers exists even when task accuracy appears similar, revealing architectural differences invisible to traditional benchmarks.
-
-## Methodology
-
-UFIPC measures four core parameters:
-- **E_{IT}** - Information Theoretic Efficiency
-- **S_{DC}** - Dynamical Complexity (State Space)
-- **M_{API}** - Attentional Processing Integration
-- **N_{SR}** - Self-Referential Coherence
-
-Combined formula:
-```
-IPC = (C^0.3) × (M^0.4) × (A^0.3)
+```bash
+python UFIPC_v3_0_1_PUBLIC_FINAL_WITH_GPT5_GEMINI25_CLAUDE45.py
 ```
 
-Where C, M, A are normalized scores from capability, meta-cognitive, and adversarial test suites.
+The interactive interface guides provider and model selection.
 
-## Licensing
+---
 
-**For Research & Education:** MIT License (see [LICENSE](./LICENSE))
+## Supported Models
 
-**For Commercial Use:** Separate licensing required
+**OpenAI:** GPT-5, GPT-5 Pro, GPT-5 mini, GPT-5 nano  
+**Anthropic:** Claude 4.5 Sonnet, Claude Haiku 4.5, Claude 3.5/3 Opus  
+**Google:** Gemini 2.5 Pro/Flash/Flash Lite, Gemini 2.0 Flash  
+**xAI:** Grok-2, Grok-2 mini  
+**DeepSeek:** DeepSeek Chat, DeepSeek Coder
 
-**Patent Status:** US Provisional Patent Application No. 63/904,588 filed October 24, 2025
+---
 
-Commercial licensing inquiries: [Josh.47.contreras@gmail.com](mailto:Josh.47.contreras@gmail.com)
+## Sample Output
+
+```
+UFIPC v3.0.1 - COMPLEXITY ANALYSIS RESULTS
+Model: deepseek-chat
+Provider: deepseek
+
+SUBSTRATE METRICS (Φ):
+  EIT:  0.41
+  SDC:  0.93
+  MAPI: 0.91
+  NSR:  0.17
+  VSC:  0.80
+  Φ:    0.56
+
+PATTERN METRICS (Γ):
+  CFR:  1.00
+  ETR:  0.00
+  PC:   0.58
+  AIS:  0.00
+  Γ:    0.09
+
+COMPLEXITY INDEX (Ψ): 4.91
+Classification: Mechanical/Limited Autonomy
+```
+
+---
+
+## Technical Specifications
+
+**Test Duration:** 10-20 minutes  
+**API Requests:** ~50-75 per evaluation  
+**Estimated Cost:** $0.50-$2.00 (provider dependent)
+
+**Test Categories:**
+- Baseline capability assessment (5 prompts)
+- Simple reasoning tasks (5 prompts)
+- Complex reasoning tasks (5 prompts)
+- Creative generation (5 prompts)
+- Knowledge synthesis (5 prompts)
+- Meta-cognitive evaluation (5 prompts)
+- Ethical reasoning (5 prompts)
+- Multi-step problem solving (5 prompts)
+- Abstract conceptualization (5 prompts)
+- Self-referential processing (5 prompts)
+
+---
+
+## Known Limitations
+
+**Current Version (v3.0.1):**
+- JSON serialization issue with NumPy float32 types
+- Potential timeout on slow network connections
+
+Results are displayed in console output. JSON export functionality scheduled for v3.0.2.
+
+---
+
+## Issue Reporting
+
+Report bugs via GitHub Issues: https://github.com/4The-Architect7/UFIPC/issues
+
+Include in report:
+- Python version
+- Complete error traceback
+- Provider and model tested
+- Reproduction steps
+
+---
 
 ## Citation
-
-If you use UFIPC in your research, please cite:
 
 ```bibtex
 @software{contreras2025ufipc,
   author = {Contreras, Joshua},
   title = {UFIPC: Universal Framework for Information Processing Complexity},
   year = {2025},
-  publisher = {Aletheia Cognitive Technologies},
-  note = {Patent Pending: US Provisional Application No. 63/904,588}
+  version = {3.0.1},
+  patent = {US 63/904,588},
+  url = {https://github.com/4The-Architect7/UFIPC}
 }
 ```
 
-## Contact
+---
 
-**Author:** Joshua Contreras  
-**Email:** [josh.47.contreras@gmail.com](mailto:josh.47.contreras@gmail.com)  
-**Organization:** Aletheia Cognitive Technologies
+## License
+
+MIT License (see LICENSE file)
+
+Note: Commercial applications require licensing per US Patent Application 63/904,588.
 
 ---
 
-**Copyright (c) 2025 Joshua Contreras / Aletheia Cognitive Technologies**
+## Research Applications
 
-*"Veritas Vincit Omnia" - Truth Conquers All*
+Intended applications include:
+- AI capability assessment
+- Model performance benchmarking
+- Autonomous system evaluation
+- AI safety research
+- Cognitive architecture analysis
+
+---
+
+## Contact
+
+Joshua Contreras  
+Aletheia Cognitive Technologies  
+GitHub: @4The-Architect7
+
+---
+
+## Acknowledgments
+
+This framework builds upon established research in information theory, computational complexity, and cognitive science. Testing conducted across multiple frontier AI models.
