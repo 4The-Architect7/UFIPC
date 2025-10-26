@@ -1,4 +1,19 @@
+# UFIPC v3.0.1 - Git Ignore File
+# Excludes sensitive and generated files from version control
+
+# ============================================================================
+# API KEYS - NEVER COMMIT THESE!
+# ============================================================================
+.env
+*.env
+.env.local
+.env.development
+.env.production
+.env.backup
+
+# ============================================================================
 # Python
+# ============================================================================
 __pycache__/
 *.py[cod]
 *$py.class
@@ -16,7 +31,6 @@ parts/
 sdist/
 var/
 wheels/
-share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
@@ -24,65 +38,72 @@ MANIFEST
 
 # Virtual environments
 venv/
-ENV/
 env/
-.venv
+ENV/
+virtualenv/
 
-# Environment variables and secrets
-.env
-.env.local
-.env.*.local
-*.key
-*_key.txt
-secrets/
-api_keys/
-
-# API Keys (critical - never commit)
-*_API_KEY*
-*_api_key*
-*.pem
-*.key
-.anthropic/
-.openai/
-
-# IDE
+# ============================================================================
+# IDE and Editors
+# ============================================================================
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
-.DS_Store
+.project
+.pydevproject
+.settings/
 
-# Testing
+# ============================================================================
+# Operating System
+# ============================================================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.directory
+
+# ============================================================================
+# UFIPC Generated Files
+# ============================================================================
+# Test results (users should generate their own)
+ufipc_results_*.json
+ufipc_transparency_*.txt
+ufipc_transparency_*.json
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+temp/
+
+# ============================================================================
+# Testing and Coverage
+# ============================================================================
 .pytest_cache/
 .coverage
-.tox/
 htmlcov/
-.hypothesis/
+.tox/
 
-# Jupyter Notebook
-.ipynb_checkpoints
-*.ipynb
-
-# Results and logs
-*.log
-*.json
-results/
-logs/
-UFIPC_Research_*.json
-UFIPC_Results_*.json
-
-# Documentation builds
+# ============================================================================
+# Documentation (if auto-generated)
+# ============================================================================
 docs/_build/
 site/
 
-# OS
-Thumbs.db
-.DS_Store
+# ============================================================================
+# Other
+# ============================================================================
+.cache/
 *.bak
-*.tmp
-
-# Research data (keep private)
-data/private/
-data/raw/
-experiments/
+*.orig
