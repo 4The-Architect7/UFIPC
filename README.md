@@ -33,7 +33,7 @@ The framework employs two metric categories:
 - PC: Pursuit of Causality
 - AIS: Architectural Integrity Score
 
-**Output:** Consciousness Complexity Index (Ψ)
+**Output:** Complexity Index (Ψ)
 
 ---
 
