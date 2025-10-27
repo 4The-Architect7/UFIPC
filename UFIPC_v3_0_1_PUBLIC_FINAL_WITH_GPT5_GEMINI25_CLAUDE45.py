@@ -946,6 +946,56 @@ def display_model_menu(provider_id: str):
     
     return models_list
 
+def convert_to_json_serializable(obj):
+    """
+    Recursively convert NumPy/PyTorch types to native Python types for JSON serialization.
+    
+    Handles:
+    - NumPy scalar types (float32, float64, int32, int64, bool_, etc.)
+    - NumPy arrays (converts to lists)
+    - PyTorch tensors (if present)
+    - Nested dictionaries and lists
+    - Native Python types (pass-through for performance)
+    """
+    # Handle None explicitly
+    if obj is None:
+        return None
+    
+    # Handle NumPy scalar types
+    if isinstance(obj, (np.integer, np.floating, np.bool_)):
+        return obj.item()
+    
+    # Handle NumPy arrays
+    if isinstance(obj, np.ndarray):
+        return obj.tolist()
+    
+    # Handle PyTorch tensors (if torch is used)
+    if hasattr(obj, 'cpu') and hasattr(obj, 'numpy'):
+        try:
+            if obj.ndim == 0 or (obj.ndim == 1 and obj.shape[0] == 1):
+                return obj.item()
+            return obj.cpu().detach().numpy().tolist()
+        except (AttributeError, RuntimeError):
+            return str(obj)
+    
+    # Handle dictionaries (recursive)
+    if isinstance(obj, dict):
+        return {key: convert_to_json_serializable(value) for key, value in obj.items()}
+    
+    # Handle lists and tuples (recursive)
+    if isinstance(obj, (list, tuple)):
+        return [convert_to_json_serializable(item) for item in obj]
+    
+    # Handle native Python types
+    if isinstance(obj, (str, int, float, bool)):
+        return obj
+    
+    # Fallback for any other types
+    try:
+        return float(obj)
+    except (TypeError, ValueError):
+        return str(obj)
+
 def save_results(result: BenchmarkResult, transparency: TransparencyLogger):
     """Save results and transparency report."""
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
@@ -979,8 +1029,11 @@ def save_results(result: BenchmarkResult, transparency: TransparencyLogger):
         }
     }
     
+    # Convert NumPy/PyTorch types to native Python types for JSON serialization
+    serializable_dict = convert_to_json_serializable(result_dict)
+    
     with open(output_file, 'w') as f:
-        json.dump(result_dict, f, indent=2)
+        json.dump(serializable_dict, f, indent=2)
     
     print(f"\n✅ Results saved to: {output_file}")
     
